@@ -1,5 +1,5 @@
 import time
-from turtle import  Screen
+from turtle import Screen
 from cars import VehicleController
 from road import Road
 from scoreboard import Scoreboard, GameOver
@@ -97,8 +97,6 @@ def finish():
         return True
 
 
-#moving_cars()
-
 #listen for keypress
 screen.listen()
 
@@ -115,24 +113,17 @@ add_speed = 0
 while game_is_on:
     screen.update()
     time.sleep(0.1)
-    #new_car()
-    #for list in vehicle_list:
-    #    list.drive()
     if len(vehicle_list) > 0:
         for vehicle in vehicle_list:
             vehicle.drive(add_speed)
             if vehicle.xcor() > 700 or vehicle.xcor() < -700:
                 vehicle.ht()
                 vehicle_list.remove(vehicle)
-            print(vehicle.shapesize())
-
 
     if counter_n > 12:
         vehicle_list.append(random_vehicle_generator())
-        print(vehicle_list[-1].shape())
         counter_n = 0
     counter_n += 1
-
 
     if hit_vehicle() == True:
         score.clear_gamescore()
